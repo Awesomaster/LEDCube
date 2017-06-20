@@ -40,11 +40,11 @@ class Visualiser(object):
             for y in range(pastj):
                 for x in range(pastj):
                     common.grid(x+pastk,y+pastk,z,0)
-                    common.grid(x+pastk,y+pastk,z+1,1)
+                    common.grid(x+pastk,y+pastk,z-1,1)
             
             for y in range(j):
                 for x in range(j):
-                    common.grid(x+k,y+k,z+1,0)
+                    common.grid(x+k,y+k,z-1,0)
             
             common.send()
             
