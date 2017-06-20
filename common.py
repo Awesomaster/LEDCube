@@ -18,5 +18,5 @@ def send():
         string+='z='+str(i)+' '+''.join(str(b) for a in listy[i] for b in a)
     
     print('Grid', str(total)+':')
-    print(string.replace('1','1').replace('0','-')+'\n')
+    print(string.replace('1','1').replace('0','0')+'\n')
     time.sleep(0.01)
