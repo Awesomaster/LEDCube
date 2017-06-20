@@ -24,21 +24,31 @@ class Visualiser(object):
         self.currentfreq = currentfreq
 
     def hightolow(self):
-        z = 0
+        z = 7
         for i in range(4):
             j = (i+1)*2
             pastj = j-2
             k = 3-i
             pastk = k+1
-
+            
+            # Turn on the inside circle of a layer
             for y in range(j):
                 for x in range(j):
                     common.grid(x+k,y+k,z,1)
-                        
+            
+            # Turn off the past inside ring and turn on ring layer of the lower layer
             for y in range(pastj):
                 for x in range(pastj):
                     common.grid(x+pastk,y+pastk,z,0)
+                    common.grid(x+pastk,y+pastk,z+1,1)
+            
+            for y in range(j):
+                for x in range(j):
+                    common.grid(x+k,y+k,z+1,0)
+            
             common.send()
+            
+            for y in range(
         x=x
 
     def lowtohigh(self):
