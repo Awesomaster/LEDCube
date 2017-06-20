@@ -14,6 +14,7 @@ If it was low then gets higher, make the middle go up first then the outside goe
 What other possiblilies are there?
 Make a relative point for the pitch (ie the middle is ...Hz (middle), high is ...Hz (top) and low is ...Hz (bottom)) (of cube)
 
+Range of frequencies in common songs is 20-16000 Hz
 frequences is a list of the frequences at every 0.1s interval or so
 '''
 class Visualiser(object):
@@ -23,7 +24,7 @@ class Visualiser(object):
         self.currentfreq = currentfreq
 
     def hightolow(self):
-
+        z = 0
         for i in range(4):
             j = (i+1)*2
             pastj = j-2
@@ -32,11 +33,11 @@ class Visualiser(object):
 
             for y in range(j):
                 for x in range(j):
-                    common.grid(x+k,y+k,0,1)
+                    common.grid(x+k,y+k,z,1)
                         
             for y in range(pastj):
                 for x in range(pastj):
-                    common.grid(x+pastk,y+pastk,0,0)
+                    common.grid(x+pastk,y+pastk,z,0)
             common.send()
         x=x
 
