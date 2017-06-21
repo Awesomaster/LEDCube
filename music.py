@@ -15,6 +15,7 @@ What other possiblilies are there?
 Make a relative point for the pitch (ie the middle is ...Hz (middle), high is ...Hz (top) and low is ...Hz (bottom)) (of cube)
 
 Range of frequencies in common songs is 20-16000 Hz
+Therefore we will make it 0-2000, 2000-4000, 4000-6000, 6000-8000... 14000-16000
 frequences is a list of the frequences at every 0.1s interval or so
 '''
 class Visualiser(object):
@@ -116,6 +117,19 @@ def song(frequencies):
         else:
             previous = frequencies[i-1]
 
+        current = (current//2000)-1
+        previous = (previous//2000)-1
+
+        if current > 7:
+            current = 7
+        elif current < 0:
+            current = 0
+
+        if previous > 7:
+            previous = 7
+        elif previous < 0:
+            previous = 0
+            
         # Low To High
         if current < previous:
             while current < (previous):
