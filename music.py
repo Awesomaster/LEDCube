@@ -25,30 +25,51 @@ class Visualiser(object):
 
     def hightolow(self):
         z = 7
-        for i in range(4):
+        for i in range(6):
             j = (i+1)*2
             pastj = j-2
+            pasterj = j-4
             k = 3-i
             pastk = k+1
+            pasterk = k+2
             
             # Turn on the inside circle of a layer
-            for y in range(j):
+            if j > 10:
+                for x in range(8):
+                    for y in range(8):
+                        common.grid(x,y,z-1,0)
+            elif j > 8:
+                for x in range(8):
+                    for y in range(8):
+                        common.grid(x+k,y+k,z,0)
+                        common.grid(x+k,y+k,z-1,1)
+            else:
                 for x in range(j):
-                    common.grid(x+k,y+k,z,1)
+                    for y in range(j):
+                        common.grid(x+k,y+k,z,1)
+                        common.grid(x+k,y+k,z-1,0)
             
             # Turn off the past inside ring and turn on ring layer of the lower layer
-            for y in range(pastj):
+            if j < 10:
                 for x in range(pastj):
-                    common.grid(x+pastk,y+pastk,z,0)
-                    common.grid(x+pastk,y+pastk,z-1,1)
-            
+                    for y in range(pastj):
+                        common.grid(x+pastk,y+pastk,z,0)
+                        common.grid(x+pastk,y+pastk,z-1,1)
+
+            if pasterj >= 0:
+                for x in range(pasterj):
+                    for y in range(pasterj):
+                        common.grid(x+pasterk,y+pasterk,z-1,0)
+
+            '''
             for y in range(j):
                 for x in range(j):
-                    common.grid(x+k,y+k,z-1,0)
-            
+                    
+            '''
             common.send()
             
-            for y in range(
+            for y in range(z):
+                x=x
         x=x
 
     def lowtohigh(self):
