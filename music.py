@@ -24,7 +24,7 @@ class Visualiser(object):
         self.currentfreq = currentfreq
 
     def hightolow(self):
-        z = 7
+        z = self.currentfreq
         for i in range(6):
             j = (i+1)*2
             pastj = j-2
@@ -61,20 +61,47 @@ class Visualiser(object):
                     for y in range(pasterj):
                         common.grid(x+pasterk,y+pasterk,z-1,0)
 
-            '''
-            for y in range(j):
-                for x in range(j):
-                    
-            '''
             common.send()
-            
-            for y in range(z):
-                x=x
-        x=x
 
     def lowtohigh(self):
-        #do b
-        x=x
+        z = self.currentfreq
+        for i in range(6):
+            j = (i+1)*2
+            pastj = j-2
+            pasterj = j-4
+            k = 3-i
+            pastk = k+1
+            pasterk = k+2
+            
+            # Turn on the inside circle of a layer
+            if j > 10:
+                for x in range(8):
+                    for y in range(8):
+                        common.grid(x,y,z+1,0)
+            elif j > 8:
+                for x in range(8):
+                    for y in range(8):
+                        common.grid(x+k,y+k,z,0)
+                        common.grid(x+k,y+k,z+1,1)
+            else:
+                for x in range(j):
+                    for y in range(j):
+                        common.grid(x+k,y+k,z,1)
+                        common.grid(x+k,y+k,z+1,0)
+            
+            # Turn off the past inside ring and turn on ring layer of the lower layer
+            if j < 10:
+                for x in range(pastj):
+                    for y in range(pastj):
+                        common.grid(x+pastk,y+pastk,z,0)
+                        common.grid(x+pastk,y+pastk,z+1,1)
+
+            if pasterj >= 0:
+                for x in range(pasterj):
+                    for y in range(pasterj):
+                        common.grid(x+pasterk,y+pasterk,z+1,0)
+
+            common.send()
 
     def staysame(self):
         #do c
@@ -90,12 +117,16 @@ def song(frequencies):
             previous = frequencies[i-1]
 
         # Low To High
-        if current > previous:
-            Visualiser(previous, current).lowtohigh()
+        if current < previous:
+            while current < (previous):
+                music.Visualiser(previous, current).lowtohigh()
+                current+=1
 
         # High To Low
-        if current < previous:
-            Visualiser(previous, current).hightolow()
+        if current > previous:
+            while current > (previous):
+                music.Visualiser(previous, current).hightolow()
+                current-=1
 
         # Stay Same
         if current == previous:
