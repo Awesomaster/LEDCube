@@ -105,7 +105,7 @@ class Visualiser(object):
             common.send()
 
     def staysame(self):
-        z.self.currentfreq
+        z = self.currentfreq
         for x in range(8):
             for y in range(8):
                 common.grid(x,y,z,1)
