@@ -105,8 +105,18 @@ class Visualiser(object):
             common.send()
 
     def staysame(self):
-        #do c
-        x=x
+        z.self.currentfreq
+        for x in range(8):
+            for y in range(8):
+                common.grid(x,y,z,1)
+                
+        common.send()
+        
+        for x in range(8):
+            for y in range(8):
+                common.grid(x,y,z,0)
+        
+        common.send()
 
 def song(frequencies):
     for i in range(len(frequencies)):
