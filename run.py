@@ -25,10 +25,10 @@ def layerbylayer():
     functions.layerbylayer()
 
 def insidethenout():
-    functions.insidethenout():
+    functions.insidethenout()
 
 def outsidethenin():
-    functions.outsidethenin():
+    functions.outsidethenin()
 
 def insidethenouthollow():
     functions.insidethenouthollow()
