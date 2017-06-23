@@ -143,17 +143,13 @@ def song(frequencies):
             previous = 0
             
         # High to Low
-        print('current:', current)
-        print('previous:', previous)
         if current < previous:
-            print('hightolow')
             while current < (previous):
                 Visualiser(previous, previous-1).hightolow()
                 previous-=1
 
         # Low to High
         if current > previous:
-            print('lowtohigh')
             while current > (previous):
                 Visualiser(previous, previous+1).lowtohigh()
                 previous+=1
