@@ -128,9 +128,9 @@ def song(frequencies):
         else:
             previous = frequencies[i-1]
 
-        current = (math.log(2, current)/12)*8
-        previous = (math.log(2, previous)/12)*8
-
+        current = (math.log(current, 2)/12)*8-1
+        previous = (math.log(previous, 2)/12)*8-1
+        print(current)
         if current > 7:
             current = 7
         elif current < 0:
