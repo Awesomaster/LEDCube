@@ -128,9 +128,10 @@ def song(frequencies):
         else:
             previous = frequencies[i-1]
 
-        current = (math.log(current, 2)/12)*8-1
-        previous = (math.log(previous, 2)/12)*8-1
+        current = int((math.log(current, 2)/12)*8)
+        previous = int((math.log(previous, 2)/12)*8)
         print(current)
+        
         if current > 7:
             current = 7
         elif current < 0:
@@ -141,17 +142,21 @@ def song(frequencies):
         elif previous < 0:
             previous = 0
             
-        # Low To High
+        # High to Low
+        print('current:', current)
+        print('previous:', previous)
         if current < previous:
+            print('hightolow')
             while current < (previous):
-                Visualiser(previous, current).lowtohigh()
-                current+=1
+                Visualiser(previous, previous-1).hightolow()
+                previous-=1
 
-        # High To Low
+        # Low to High
         if current > previous:
+            print('lowtohigh')
             while current > (previous):
-                Visualiser(previous, current).hightolow()
-                current-=1
+                Visualiser(previous, previous+1).lowtohigh()
+                previous+=1
 
         # Stay Same
         if current == previous:

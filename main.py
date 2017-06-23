@@ -4,7 +4,7 @@ import run
 
 def play():
     run.zero()
-    run.song([3000,4000,20])
+    run.song([3000,2000,20])
 
 play()
 
