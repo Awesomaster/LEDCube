@@ -143,13 +143,13 @@ def song(frequencies):
         # Low To High
         if current < previous:
             while current < (previous):
-                music.Visualiser(previous, current).lowtohigh()
+                Visualiser(previous, current).lowtohigh()
                 current+=1
 
         # High To Low
         if current > previous:
             while current > (previous):
-                music.Visualiser(previous, current).hightolow()
+                Visualiser(previous, current).hightolow()
                 current-=1
 
         # Stay Same
