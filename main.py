@@ -1,23 +1,16 @@
 import time
-import common
-import functions
-import music
-import fluid
+import run
+# Run is a file in which I have compiled all the functions that are used and made them subfunctions, as well as making zero send after it runs
 
-def run():
-    functions.zero()
-    common.send()
-    current = 4
-    previous = 6
-    #music.Visualiser(previous,current).hightolow()
-    while current < (previous):
-        music.Visualiser(previous, current).lowtohigh()
-        current+=1
+def play():
+    run.zero()
+    run.song([5000,8000,1000])
 
-run()
+play()
 
 # Refer to listy as common.listy
 
 '''
 USE SHIFT PI MODULE
+In a seperate file plz
 '''
