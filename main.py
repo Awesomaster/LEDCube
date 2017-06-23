@@ -8,7 +8,7 @@ def play():
 
 play()
 
-# Refer to listy as common.listy
+# Refer to listy as common.listy which is cool
 
 '''
 USE SHIFT PI MODULE
