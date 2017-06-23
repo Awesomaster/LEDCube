@@ -69,7 +69,7 @@ def insidethenouthollow():
             for y in range(j):
                 for x in range(j):
                     common.grid(x+k,y+k,z+k,1)
-                    
+
         for z in range(pastj):
             for y in range(pastj):
                 for x in range(pastj):
