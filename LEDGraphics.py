@@ -14,16 +14,6 @@ size = 50
 margin = 5
 n = 8
 
-gridy = []
-for layer in range(n):
-    gridy.append([])
-    for row in range(n):
-        gridy[layer].append([])
-        for column in range(n):
-            gridy[layer][row].append(0)
-
-
-
 # Initialize pygame
 pygame.init()
 
@@ -44,7 +34,6 @@ reallyDone = False
 clock = pygame.time.Clock()
 while not reallyDone:
     for i in range(8):
-        grid = gridy[i]
         i+=1
 
         while not done:
@@ -64,13 +53,13 @@ while not reallyDone:
                         if row >= 8:
                             done = True
                         else:
-                            grid[row][column] = 1
+                            common.gridy[i][row][column] = 1
                     elif event.button == 3:
                         if row >= 8:
                             done = True
                         else:
-                            grid[row][column] = 0
-                            print(grid[row][column])
+                            common.gridy[i][row][column] = 0
+                            print(common.gridy[i][row][column])
 
             screen.fill(black)
 
@@ -78,10 +67,10 @@ while not reallyDone:
                 for column in range(8):
                     color = white
                     if i>1:
-                        if gridy[i-2][row][column] == 1:
+                        if common.gridy[i-2][row][column] == 1:
                             color = lightgreen
 
-                    if grid[row][column] == 1:
+                    if common.gridy[i][row][column] == 1:
                         color = green
                     pygame.draw.rect(screen,
                                      color,
@@ -105,6 +94,6 @@ while not reallyDone:
             pygame.display.flip()
         done = False
     reallyDone = True
-    
-run.send(gridy)
+
+run.send()
 pygame.quit()
