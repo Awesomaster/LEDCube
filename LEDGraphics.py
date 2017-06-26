@@ -59,7 +59,6 @@ while not reallyDone:
                             done = True
                         else:
                             common.gridy[i][row][column] = 0
-                            print(common.gridy[i][row][column])
 
             screen.fill(black)
 
