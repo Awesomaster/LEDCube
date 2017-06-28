@@ -19,6 +19,7 @@ Range of frequencies in common songs is 20-4000 Hz
 Therefore we will make it each row the log base 2 of the freqencey
 frequences is a list of the frequences at every 0.1s interval or so
 '''
+
 class Visualiser(object):
     
     def __init__(self, previousfreq, currentfreq):
@@ -107,6 +108,7 @@ class Visualiser(object):
 
     def staysame(self):
         z = self.currentfreq
+
         for x in range(8):
             for y in range(8):
                 common.grid(x,y,z,1)
