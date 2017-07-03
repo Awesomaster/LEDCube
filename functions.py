@@ -5,17 +5,11 @@ import time
 
 # zero: A function that turns every LED in the array off
 def zero():
-    for z in range(8):
-        for y in range(8):
-            for x in range(8):
-                common.grid(x,y,z,0)
+    common.listy = common.listy_empty
 
 # fill: A function that turns on every LED in the array
 def fill():
-    for z in range(8):
-        for y in range(8):
-            for x in range(8):
-                common.grid(x,y,z,1)
+    common.listy = common.listy_full
 
 # layerbylayer: A function that goes from the bottom layer to the top layer and turns them on then off
 def layerbylayer():
