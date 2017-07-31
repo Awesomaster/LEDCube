@@ -26,12 +26,12 @@ def flatten(y, x):
 def send():
     global total
     total += 1
-    stringa = ''
+    string = ''
     for i in range(8):
         i = 7-i
-        stringa+='z='+str(i)+' '+''.join(str(b) for a in listy[i] for b in a)
-    stringa = ''.join(flatten(listy, []))
+        string+='z='+str(i)+' '+''.join(str(b) for a in listy[i] for b in a)
+    string = ''.join(flatten(listy, []))
     print('Grid', str(total)+':')
-    print(stringa.replace('1','1').replace('0','0')+'\n')
+    print(string.replace('1','1').replace('0','0')+'\n')
     time.sleep(0.01)
 
