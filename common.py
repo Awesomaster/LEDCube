@@ -21,7 +21,7 @@ def flatten(y, x):
         else:
             x.append(number)
             
-    return numbers
+    return x
 
 def send():
     global total
