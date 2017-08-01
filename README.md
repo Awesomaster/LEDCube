@@ -3,7 +3,7 @@ Code for the LEDCube project 2017 engineering studies Yr 12
 
 # All current functions (As of 23rd June 2017)
 
-send() -> Print grid in current state (will be changed to sending to cube)
+send() -> Print grid in current state and send to cube
 
 grid(x,y,z,state) -> sets the LED at position x,y,z to the state (either off (0) or on (1))
 
