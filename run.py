@@ -8,6 +8,7 @@ import fluid
 
 def send():
     common.send()
+    shifty.execute()
 
 def grid(x,y,z,state):
     common.grid(x,y,z,state)
