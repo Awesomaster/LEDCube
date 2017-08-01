@@ -3,6 +3,7 @@ import common
 import functions
 import music
 import fluid
+import shifty
 
 # Things from common file
 
