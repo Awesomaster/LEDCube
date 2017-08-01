@@ -2,6 +2,7 @@ import time
 import common
 import functions
 import math
+import shifty
 
 # --- <Visualiser> ---
 
@@ -65,6 +66,7 @@ class Visualiser(object):
                         common.grid(x+pasterk,y+pasterk,z-1,0)
 
             common.send()
+            shifty.execute()
 
     def lowtohigh(self):
         z = self.currentfreq
@@ -105,6 +107,7 @@ class Visualiser(object):
                         common.grid(x+pasterk,y+pasterk,z+1,0)
 
             common.send()
+            shifty.execute()
 
     def staysame(self):
         z = self.currentfreq
@@ -114,12 +117,14 @@ class Visualiser(object):
                 common.grid(x,y,z,1)
                 
         common.send()
+        shifty.execute()
         
         for x in range(8):
             for y in range(8):
                 common.grid(x,y,z,0)
         
         common.send()
+        shifty.execute()
 
 def song(frequencies):
     for i in range(len(frequencies)):
