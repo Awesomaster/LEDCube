@@ -24,7 +24,6 @@ def flatten(listy, listx):
 _registers = flatten(common.listy, [])
 print(_registers)
 
-_number_of_shiftregisters = 9
 all_pins = 72
 
 def pinsSetup(**kwargs):
