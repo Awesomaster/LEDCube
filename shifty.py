@@ -21,8 +21,8 @@ def flatten(listy, listx):
             
     return listx
 
-_registers = flatten(common.listy, [])
-print(_registers)
+registers = flatten(common.listy, [])
+print(registers)
 
 all_pins = 72
 
@@ -57,7 +57,7 @@ def execute():
     for pin in range(all_pins-1, -1, -1):
         GPIO.output(_SRCLK_pin, GPIO.LOW)
 
-        pin_mode = _registers[pin]
+        pin_mode = registers[pin]
 
         GPIO.output(_SER_pin, pin_mode)
         GPIO.output(_SRCLK_pin, GPIO.HIGH)
