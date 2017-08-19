@@ -94,5 +94,8 @@ while not reallyDone:
         done = False
     reallyDone = True
 
+a = open('presets.txt','a')
+a.write(''.join(shifty.flatten(common.listy,[])))
+a.close()
 run.send()
 pygame.quit()

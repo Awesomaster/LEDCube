@@ -14,6 +14,15 @@ def grid(x,y,z,state):
 def gridfindstate(x,y,z):
     return listy[int(z)][int(y)][int(x)]
 
+def flatten(y, x):
+    for number in y:
+        if isinstance(number, (list, tuple)):           
+            flatten(number, x)
+        else:
+            x.append(number)
+            
+    return x
+
 def send():
     global total
     total += 1
@@ -21,7 +30,12 @@ def send():
     for i in range(8):
         i = 7-i
         string+='z='+str(i)+' '+''.join(str(b) for a in listy[i] for b in a)
+<<<<<<< HEAD
 
+=======
+    string = ''.join(flatten(listy, []))
+>>>>>>> 8fa3278412ee4467a0dd46683473d21b5471afd3
     print('Grid', str(total)+':')
     print(string.replace('1','1').replace('0','0')+'\n')
     time.sleep(0.01)
+
