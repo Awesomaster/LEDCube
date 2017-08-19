@@ -1,21 +1,16 @@
 import common
 import time
+import shifty
 
 # --- These Functions Work ---
 
 # zero: A function that turns every LED in the array off
 def zero():
-    for z in range(8):
-        for y in range(8):
-            for x in range(8):
-                common.grid(x,y,z,0)
+    common.listy = common.listy_empty
 
 # fill: A function that turns on every LED in the array
 def fill():
-    for z in range(8):
-        for y in range(8):
-            for x in range(8):
-                common.grid(x,y,z,1)
+    common.listy = common.listy_full
 
 # layerbylayer: A function that goes from the bottom layer to the top layer and turns them on then off
 def layerbylayer():
@@ -24,10 +19,12 @@ def layerbylayer():
             for x in range(8):
                 common.grid(x,y,z,1)
         common.send() # Has a sleep within it
+        shifty.execute()
         for j in range(8):
             for i in range(8):
                 common.grid(j,i,z,0)
         common.send()
+        shifty.execute()
 
 # insidethenout: A function that fills the cube from the middle, part by part
 def insidethenout():
@@ -40,6 +37,7 @@ def insidethenout():
                 for x in range(j):
                     common.grid(x+k,y+k,z+k,1)
         common.send()
+        shifty.execute()
         if i != 4:
             zero()
 
@@ -54,6 +52,7 @@ def outsidethenin():
                 for x in range(j):
                     common.grid(x+k,y+k,z+k,1)
         common.send()
+        shifty.execute()
         if i != 4:
             zero()
 
@@ -75,6 +74,7 @@ def insidethenouthollow():
                 for x in range(pastj):
                     common.grid(x+pastk,y+pastk,z+pastk,0)
         common.send()
+        shifty.execute()
         if i != 3:
             zero()
 
@@ -95,6 +95,7 @@ def outsidetheninhollow():
                 for x in range(pastj):
                     common.grid(x+pastk,y+pastk,z+pastk,0)
         common.send()
+        shifty.execute()
         zero()
 
 # fillfrombottom: A function that gets every point that is turned on and turns on every LED below it
@@ -110,6 +111,7 @@ def fillfrombottom():
                     common.grid(x,y,z2,1)
             maxz = 0
     common.send()
+    shifty.execute()
 
 # fillfromtop: A function that gets every point that is turned on and turns on every LED below it
 def fillfromtop():
@@ -129,3 +131,4 @@ def fillfromtop():
                     common.grid(x,y,z2,1)
             minz = 0
     common.send()
+    shifty.execute()

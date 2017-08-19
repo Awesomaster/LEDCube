@@ -2,6 +2,7 @@ import time
 import common
 import functions
 import math
+import shifty
 
 # --- <Visualiser> ---
 
@@ -19,8 +20,9 @@ Range of frequencies in common songs is 20-4000 Hz
 Therefore we will make it each row the log base 2 of the freqencey
 frequences is a list of the frequences at every 0.1s interval or so
 '''
+
 class Visualiser(object):
-    
+
     def __init__(self, previousfreq, currentfreq):
         self.previousfreq = previousfreq
         self.currentfreq = currentfreq
@@ -34,7 +36,7 @@ class Visualiser(object):
             k = 3-i
             pastk = k+1
             pasterk = k+2
-            
+
             # Turn on the inside circle of a layer
             if j > 10:
                 for x in range(8):
@@ -50,7 +52,7 @@ class Visualiser(object):
                     for y in range(j):
                         common.grid(x+k,y+k,z,1)
                         common.grid(x+k,y+k,z-1,0)
-            
+
             # Turn off the past inside ring and turn on ring layer of the lower layer
             if j < 10:
                 for x in range(pastj):
@@ -64,6 +66,7 @@ class Visualiser(object):
                         common.grid(x+pasterk,y+pasterk,z-1,0)
 
             common.send()
+            shifty.execute()
 
     def lowtohigh(self):
         z = self.currentfreq
@@ -74,7 +77,7 @@ class Visualiser(object):
             k = 3-i
             pastk = k+1
             pasterk = k+2
-            
+
             # Turn on the inside circle of a layer
             if j > 10:
                 for x in range(8):
@@ -90,7 +93,7 @@ class Visualiser(object):
                     for y in range(j):
                         common.grid(x+k,y+k,z,1)
                         common.grid(x+k,y+k,z+1,0)
-            
+
             # Turn off the past inside ring and turn on ring layer of the lower layer
             if j < 10:
                 for x in range(pastj):
@@ -104,24 +107,32 @@ class Visualiser(object):
                         common.grid(x+pasterk,y+pasterk,z+1,0)
 
             common.send()
+            shifty.execute()
 
     def staysame(self):
         z = self.currentfreq
+
         for x in range(8):
             for y in range(8):
                 common.grid(x,y,z,1)
-                
+
         common.send()
+<<<<<<< HEAD
+
+=======
+        shifty.execute()
         
+>>>>>>> 8fa3278412ee4467a0dd46683473d21b5471afd3
         for x in range(8):
             for y in range(8):
                 common.grid(x,y,z,0)
-        
+
         common.send()
+        shifty.execute()
 
 def song(frequencies):
     for i in range(len(frequencies)):
-        
+
         current = frequencies[i]
         if i == 0:
             previous = current
@@ -131,7 +142,7 @@ def song(frequencies):
         current = int((math.log(current, 2)/12)*8)
         previous = int((math.log(previous, 2)/12)*8)
         print(current)
-        
+
         if current > 7:
             current = 7
         elif current < 0:
@@ -141,7 +152,7 @@ def song(frequencies):
             previous = 7
         elif previous < 0:
             previous = 0
-            
+
         # High to Low
         if current < previous:
             while current < (previous):

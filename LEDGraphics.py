@@ -24,7 +24,7 @@ window_size = [window_width, window_height]
 screen = pygame.display.set_mode(window_size)
 
 # Set title of screen
-pygame.display.set_caption("LED Cube")
+pygame.display.set_caption("LEDCube")
 
 # Loop until the user clicks the close button.
 done = False
@@ -33,7 +33,7 @@ reallyDone = False
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 while not reallyDone:
-    for i in range(8):
+    for i in range(n):
         i+=1
 
         while not done:
@@ -50,20 +50,20 @@ while not reallyDone:
                     row = pos[1] // (size + margin)
 
                     if event.button == 1:
-                        if row >= 8:
+                        if row >= n:
                             done = True
                         else:
                             common.gridy[i][row][column] = 1
                     elif event.button == 3:
-                        if row >= 8:
+                        if row >= n:
                             done = True
                         else:
                             common.gridy[i][row][column] = 0
 
             screen.fill(black)
 
-            for row in range(8):
-                for column in range(8):
+            for row in range(n):
+                for column in range(n):
                     color = white
                     if i>1:
                         if common.gridy[i-2][row][column] == 1:
@@ -86,7 +86,7 @@ while not reallyDone:
                                   size])
 
                 myfont = pygame.font.SysFont("monospace", 30)
-                label = myfont.render("Layer: "+str(i), 1, (0,0,0))
+                label = myfont.render("Layer: "+str(i), 1, black)
                 screen.blit(label, (margin, window_width+(2*margin)))
 
             clock.tick(60)
@@ -94,5 +94,8 @@ while not reallyDone:
         done = False
     reallyDone = True
 
+a = open('presets.txt','a')
+a.write(''.join(shifty.flatten(common.listy,[])))
+a.close()
 run.send()
 pygame.quit()
