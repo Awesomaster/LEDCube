@@ -117,12 +117,8 @@ class Visualiser(object):
                 common.grid(x,y,z,1)
 
         common.send()
-<<<<<<< HEAD
-
-=======
         shifty.execute()
         
->>>>>>> 8fa3278412ee4467a0dd46683473d21b5471afd3
         for x in range(8):
             for y in range(8):
                 common.grid(x,y,z,0)
