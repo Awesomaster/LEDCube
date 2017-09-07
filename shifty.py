@@ -8,9 +8,13 @@ GPIO.setmode(GPIO.BCM)
 HIGH = 1
 LOW  = 0
 
-_SER_pin   = 25    #pin 14 on the 75HC595
+_SER0_pin   = 25    #pin 14 on the shift
+_SRCLK0_pin = 23   #pin 11 on the shift
+_SER1_pin   = 25    #pin 14 on the shift
+_SRCLK1_pin = 23   #pin 11 on the shift
+
+
 _RCLK_pin  = 24    #pin 12 on the 75HC595
-_SRCLK_pin = 23   #pin 11 on the 75HC595
 
 def flatten(listy, listx):
     for number in listy:
@@ -26,6 +30,7 @@ print(registers)
 
 all_pins = 72
 
+/*
 def pinsSetup(**kwargs):
     global _SER_pin, _RCLK_pin, _SRCLK_pin
 
@@ -50,8 +55,22 @@ def pinsSetup(**kwargs):
     GPIO.setup(_SER_pin, GPIO.OUT)
     GPIO.setup(_RCLK_pin, GPIO.OUT)
     GPIO.setup(_SRCLK_pin, GPIO.OUT)
+*/
 
 def execute():
+    for i in range(8):
+        GPIO.output(_SRCLK0_pin, GPIO.LOW) # Start looking at the z shift register
+        GPIO.output(_SER0_pin, GPIO.HIGH) # Turn layer on
+        
+        # Because they are all different variables I cannot put them in a loop which makes me sad but alas thats how the news goes
+        
+        for j in range(common.listy[i][0]):
+            GPIO.output(_SRCLK1_pin, GPIO.LOW)
+            GPIO.output(_SER1_pin, int(j))
+            GPIO.output(_SRCLK1_pin, GPIO.HIGH)
+        
+        GPIO.output(_SRCLK0_pin, GPIO.HIGH) # Switch to next layer
+        
     registers = flatten(common.listy, [])
     GPIO.output(_RCLK_pin, GPIO.LOW)
 
