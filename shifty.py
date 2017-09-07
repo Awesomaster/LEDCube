@@ -52,6 +52,7 @@ def pinsSetup(**kwargs):
     GPIO.setup(_SRCLK_pin, GPIO.OUT)
 
 def execute():
+    registers = flatten(common.listy, [])
     GPIO.output(_RCLK_pin, GPIO.LOW)
 
     for pin in range(all_pins-1, -1, -1):
