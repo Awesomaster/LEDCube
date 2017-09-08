@@ -9,26 +9,27 @@ HIGH = 1
 LOW  = 0
 
 # FOR ANGUS:
-_SER0_pin   = 10    #pin 14 on the shift
-_SRCLK0_pin = 23   #pin 11 on the shift
-_SER1_pin   = 2    #pin 14 on the shift
-_SRCLK1_pin = 11   #pin 11 on the shift
-_SER2_pin   = 3    #pin 14 on the shift
-_SRCLK2_pin = 12   #pin 11 on the shift
-_SER3_pin   = 4    #pin 14 on the shift
-_SRCLK3_pin = 13   #pin 11 on the shift
-_SER4_pin   = 5    #pin 14 on the shift
-_SRCLK4_pin = 16   #pin 11 on the shift
-_SER5_pin   = 6    #pin 14 on the shift
-_SRCLK5_pin = 17   #pin 11 on the shift
-_SER6_pin   = 7    #pin 14 on the shift
-_SRCLK6_pin = 18   #pin 11 on the shift
-_SER7_pin   = 8    #pin 14 on the shift
-_SRCLK7_pin = 19   #pin 11 on the shift
-_SER8_pin   = 9    #pin 14 on the shift
-_SRCLK8_pin = 20   #pin 11 on the shift
+_SER0_pin   = 13    #pin 14 on the shift
+_SRCLK0_pin = 4    #pin 11 on the shift
+_SER1_pin   = 16    #pin 14 on the shift
+_SRCLK1_pin = 5   #pin 11 on the shift
+_SER2_pin   = 17   #pin 14 on the shift
+_SRCLK2_pin = 6   #pin 11 on the shift
+_SER3_pin   = 18   #pin 14 on the shift
+_SRCLK3_pin = 7   #pin 11 on the shift
+_SER4_pin   = 19   #pin 14 on the shift
+_SRCLK4_pin = 8   #pin 11 on the shift
+_SER5_pin   = 20   #pin 14 on the shift
+_SRCLK5_pin = 9   #pin 11 on the shift
+_SER6_pin   = 21   #pin 14 on the shift
+_SRCLK6_pin = 10   #pin 11 on the shift
+_SER7_pin   = 22   #pin 14 on the shift
+_SRCLK7_pin = 11   #pin 11 on the shift
+_SER8_pin   = 23   #pin 14 on the shift
+_SRCLK8_pin = 12   #pin 11 on the shift
 
-_RCLK_pin  = 21    #pin 12 on the 75HC595
+_Layer_RCLK_pin  = 2    #pin 12 on the 75HC595
+_Column_RCLK_pin = 3
 ##
 
 # FOR JOSH:
@@ -99,54 +100,61 @@ def setup():
 
 def execute():
     for i in range(8):
-        GPIO.output(_RCLK_pin, GPIO.LOW)
+        GPIO.output(_Layer_RCLK_pin, GPIO.LOW)
         GPIO.output(_SRCLK0_pin, GPIO.LOW) # Start looking at the z shift register
         GPIO.output(_SER0_pin, GPIO.HIGH) # Turn layer on
         
         # Because they are all different variables I cannot put them in a loop which makes me sad but alas thats how the news goes
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][0]):
             GPIO.output(_SRCLK1_pin, GPIO.LOW)
             GPIO.output(_SER1_pin, int(j))
             GPIO.output(_SRCLK1_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][1]):
             GPIO.output(_SRCLK2_pin, GPIO.LOW)
             GPIO.output(_SER2_pin, int(j))
             GPIO.output(_SRCLK2_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][2]):
             GPIO.output(_SRCLK3_pin, GPIO.LOW)
             GPIO.output(_SER3_pin, int(j))
             GPIO.output(_SRCLK3_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][3]):
             GPIO.output(_SRCLK4_pin, GPIO.LOW)
             GPIO.output(_SER4_pin, int(j))
             GPIO.output(_SRCLK4_pin, GPIO.HIGH)
-            
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)    
         for j in range(common.listy[i][4]):
             GPIO.output(_SRCLK5_pin, GPIO.LOW)
             GPIO.output(_SER5_pin, int(j))
             GPIO.output(_SRCLK5_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][5]):
             GPIO.output(_SRCLK6_pin, GPIO.LOW)
             GPIO.output(_SER6_pin, int(j))
             GPIO.output(_SRCLK6_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][6]):
             GPIO.output(_SRCLK7_pin, GPIO.LOW)
             GPIO.output(_SER7_pin, int(j))
             GPIO.output(_SRCLK7_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH) 
+        GPIO.output(_Column_RCLK_pin, GPIO.LOW)
         for j in range(common.listy[i][7]):
             GPIO.output(_SRCLK8_pin, GPIO.LOW)
             GPIO.output(_SER8_pin, int(j))
             GPIO.output(_SRCLK8_pin, GPIO.HIGH)
-        
+        GPIO.output(_Column_RCLK_pin, GPIO.HIGH)
         GPIO.output(_SRCLK0_pin, GPIO.HIGH) # Switch to next layer
 
-    GPIO.output(_RCLK_pin, GPIO.HIGH)
+    GPIO.output(_Layer_RCLK_pin, GPIO.HIGH)
 
 setup()
