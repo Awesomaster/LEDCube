@@ -68,6 +68,26 @@ def pinsSetup(**kwargs):
     GPIO.setup(_RCLK_pin, GPIO.OUT)
     GPIO.setup(_SRCLK_pin, GPIO.OUT)
 '''
+def setup():
+    GPIO.setup(_RCLK_pin, GPIO.OUT)
+    GPIO.setup(_SER0_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK0_pin, GPIO.OUT)
+    GPIO.setup(_SER1_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK1_pin, GPIO.OUT)
+    GPIO.setup(_SER2_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK2_pin, GPIO.OUT)
+    GPIO.setup(_SER3_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK3_pin, GPIO.OUT)
+    GPIO.setup(_SER4_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK4_pin, GPIO.OUT)
+    GPIO.setup(_SER5_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK5_pin, GPIO.OUT)
+    GPIO.setup(_SER6_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK6_pin, GPIO.OUT)
+    GPIO.setup(_SER7_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK7_pin, GPIO.OUT)
+    GPIO.setup(_SER8_pin, GPIO.OUT)
+    GPIO.setup(_SRCLK8_pin, GPIO.OUT)
 
 def execute():
     for i in range(8):
@@ -121,4 +141,4 @@ def execute():
 
     GPIO.output(_RCLK_pin, GPIO.HIGH)
 
-pinsSetup()
+setup()
