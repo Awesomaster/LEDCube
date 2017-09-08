@@ -1,6 +1,6 @@
 import pygame
 import time
-import run
+#import run
 
 start_time = time.time()
 print('LEFT CLICK TO TURN ONE ON, RIGHT CLICK TO TURN IT OFF')
@@ -14,12 +14,20 @@ size = 50
 margin = 5
 n = 8
 
+gridy = []
+for i in range(8):
+    gridy.append([])
+    for j in range(8):
+        gridy[i].append([])
+        for k in range(8):
+            gridy[i][j].append(0)
+            
 # Initialize pygame
 pygame.init()
 
 # Set the size and size of the screen
-window_width = n*size+(n+1)*size
-window_height = (n+1)*size+(n+2)*size
+window_width = n*size+(n+1)*margin
+window_height = (n+1)*size+(n+2)*margin
 window_size = [window_width, window_height]
 screen = pygame.display.set_mode(window_size)
 
@@ -34,8 +42,6 @@ reallyDone = False
 clock = pygame.time.Clock()
 while not reallyDone:
     for i in range(n):
-        i+=1
-
         while not done:
             for event in pygame.event.get():
 
@@ -53,23 +59,23 @@ while not reallyDone:
                         if row >= n:
                             done = True
                         else:
-                            common.gridy[i][row][column] = 1
+                            gridy[i][row][column] = 1
                     elif event.button == 3:
                         if row >= n:
                             done = True
                         else:
-                            common.gridy[i][row][column] = 0
+                            gridy[i][row][column] = 0
 
             screen.fill(black)
 
             for row in range(n):
                 for column in range(n):
                     color = white
-                    if i>1:
-                        if common.gridy[i-2][row][column] == 1:
+                    if i>0:
+                        if gridy[i-1][row][column] == 1:
                             color = lightgreen
 
-                    if common.gridy[i][row][column] == 1:
+                    if gridy[i][row][column] == 1:
                         color = green
                     pygame.draw.rect(screen,
                                      color,
@@ -86,7 +92,7 @@ while not reallyDone:
                                   size])
 
                 myfont = pygame.font.SysFont("monospace", 30)
-                label = myfont.render("Layer: "+str(i), 1, black)
+                label = myfont.render("Layer: "+str(i+1), 1, black)
                 screen.blit(label, (margin, window_width+(2*margin)))
 
             clock.tick(60)
@@ -94,8 +100,17 @@ while not reallyDone:
         done = False
     reallyDone = True
 
+def flatten(listy, listx):
+    for number in listy:
+        if isinstance(number, (list, tuple)):           
+            flatten(number, listx)
+        else:
+            listx.append(number)
+            
+    return listx
+
 a = open('presets.txt','a')
-a.write(''.join(shifty.flatten(common.listy,[])))
+a.write(str(''.join(str(i) for i in flatten(gridy,[]))))
 a.close()
-run.send()
+
 pygame.quit()
