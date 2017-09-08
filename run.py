@@ -6,6 +6,8 @@ import fluid
 import shifty
 
 # Things from common file
+def setup():
+    shifty.setup()
 
 def send():
     common.send()
