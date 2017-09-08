@@ -8,26 +8,34 @@ GPIO.setmode(GPIO.BCM)
 HIGH = 1
 LOW  = 0
 
-_SER0_pin   = 25    #pin 14 on the shift
+# FOR ANGUS:
+_SER0_pin   = 10    #pin 14 on the shift
 _SRCLK0_pin = 23   #pin 11 on the shift
-_SER1_pin   = 25    #pin 14 on the shift
-_SRCLK1_pin = 23   #pin 11 on the shift
-_SER2_pin   = 25    #pin 14 on the shift
-_SRCLK2_pin = 23   #pin 11 on the shift
-_SER3_pin   = 25    #pin 14 on the shift
-_SRCLK3_pin = 23   #pin 11 on the shift
-_SER4_pin   = 25    #pin 14 on the shift
-_SRCLK4_pin = 23   #pin 11 on the shift
-_SER5_pin   = 25    #pin 14 on the shift
-_SRCLK5_pin = 23   #pin 11 on the shift
-_SER6_pin   = 25    #pin 14 on the shift
-_SRCLK6_pin = 23   #pin 11 on the shift
-_SER7_pin   = 25    #pin 14 on the shift
-_SRCLK7_pin = 23   #pin 11 on the shift
-_SER8_pin   = 25    #pin 14 on the shift
-_SRCLK8_pin = 23   #pin 11 on the shift
+_SER1_pin   = 2    #pin 14 on the shift
+_SRCLK1_pin = 11   #pin 11 on the shift
+_SER2_pin   = 3    #pin 14 on the shift
+_SRCLK2_pin = 12   #pin 11 on the shift
+_SER3_pin   = 4    #pin 14 on the shift
+_SRCLK3_pin = 13   #pin 11 on the shift
+_SER4_pin   = 5    #pin 14 on the shift
+_SRCLK4_pin = 16   #pin 11 on the shift
+_SER5_pin   = 6    #pin 14 on the shift
+_SRCLK5_pin = 17   #pin 11 on the shift
+_SER6_pin   = 7    #pin 14 on the shift
+_SRCLK6_pin = 18   #pin 11 on the shift
+_SER7_pin   = 8    #pin 14 on the shift
+_SRCLK7_pin = 19   #pin 11 on the shift
+_SER8_pin   = 9    #pin 14 on the shift
+_SRCLK8_pin = 20   #pin 11 on the shift
 
-_RCLK_pin  = 24    #pin 12 on the 75HC595
+_RCLK_pin  = 21    #pin 12 on the 75HC595
+##
+
+# FOR JOSH:
+
+
+##
+
 
 '''
 def flatten(listy, listx):
