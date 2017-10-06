@@ -9,13 +9,13 @@ high = 1
 low  = 0
 
 # FOR ANGUS:
-ser0   = 13    #pin 14 on layer shift
-srclk0 = 4    #pin 11 on layer shift
-ser1   = 16    #pin 14 on column shift
-srclk1 = 5   #pin 11 on column shift
+ser0   = 21    #pin 14 on layer shift
+srclk0 = 20    #pin 11 on layer shift
+ser1   = 26    #pin 14 on column shift
+srclk1 = 19   #pin 11 on column shift
 
-ser0rclk  = 2    #pin 12 on layer shift
-ser1rclk = 3    #pin 12 on column shift
+ser0rclk  = 16    #pin 12 on layer shift
+ser1rclk = 13    #pin 12 on column shift
 ##
 
 # FOR JOSH:
