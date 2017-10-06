@@ -5,6 +5,6 @@ import run
 def play():
     run.setup()
     run.zero()
-    run.song([3000,2000,20])
+    run.layerbylayer()
 
 play()

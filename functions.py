@@ -20,11 +20,13 @@ def layerbylayer():
                 common.grid(x,y,z,1)
         common.send() # Has a sleep within it
         shifty.execute()
+        time.sleep(1)
         for j in range(8):
             for i in range(8):
                 common.grid(j,i,z,0)
         common.send()
         shifty.execute()
+        time.sleep()
 
 # insidethenout: A function that fills the cube from the middle, part by part
 def insidethenout():
