@@ -5,6 +5,7 @@ import run
 def play():
     run.setup()
     run.zero()
-    run.layerbylayer()
-
+    for i in range(50):
+        run.layerbylayer()
+        time.sleep(1)
 play()
