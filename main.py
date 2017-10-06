@@ -8,10 +8,3 @@ def play():
     run.song([3000,2000,20])
 
 play()
-
-# Refer to listy as common.listy
-
-'''
-USE SHIFT PI MODULE
-In a seperate file plz
-'''
